@@ -1,4 +1,4 @@
-# RegexConvert
+# RegexTools
 ## DFA2Regex
 Specify a DFA and it will output regex for it.  
 For testing purpose, it will add ^()$ around regex.  
