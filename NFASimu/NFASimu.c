@@ -264,16 +264,19 @@ int run_NFA(void){
         newPt = 0;
         ch = fgetc(input_stream);
     }
+    int retans = 0;
     unsigned long long i;
     for(i=0;i<oldPt;++i){
         if(test_cbitset(&final_stages_bitset,oldStates[i])){
-            return 1;
+            retans = 1;
+            goto clean_and_return;
         }
     }
+clean_and_return:
     free_bitset(&alReadyOn);
     free(oldStates);
     free(newStates);
-    return 0;
+    return retans;
 }
 int main(int argc, char** argv){
     if(argc != 3){
