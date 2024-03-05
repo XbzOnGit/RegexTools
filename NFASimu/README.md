@@ -1,8 +1,10 @@
 # NFA simulation on the fly  
-## python version
+C and python version uses the same NFA, but in different formats.  
+## python version  
 Test this with:  
 python3 NFASimu.py nfa.json  xxx.txt  
-
+### Format  
+NFA is in json.  
 ## C version  
 Input is a graph with attribute on it.  
 Note that currently assuming that every symbol here is encoded as ASCII.   
@@ -20,7 +22,3 @@ Then there should be EXACTLY one newline to get to the next line.
 An example is given in nfa.txt, which is the same nfa with nfa.json.  
 
 Compile first and then run with ./NFASimu nfa.txt xxx.txt  
-
-TODO:  
-Might have a better way to clear alReadyOn bitset by undoing just several changes.  
-

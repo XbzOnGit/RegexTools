@@ -192,27 +192,14 @@ void parse_nfa(void){
         parse_graph_edge_line(i);
     }
 }
-void addState(unsigned long long node_idx){
-    newStates[newPt] = node_idx;
-    ++newPt;
-    put_cbitset(&alReadyOn,node_idx);
-    struct Cedges* pt = node_hash_tables[node_idx].hash_positions[HASH_TABLE_SIZE-1];
-    while(pt != NULL){
-        if(!test_cbitset(&alReadyOn,pt->des)){
-            addState(pt->des);
-        }
-        pt = pt->next;
-    }
-    return;
-}
-void add_to_old_State(unsigned long long node_idx, struct Cbitset* bpt){
-    oldStates[oldPt] = node_idx;
-    ++oldPt;
+void addState(unsigned long long node_idx, struct Cbitset* bpt, unsigned long long* thestack, unsigned long long* spt){
+    thestack[(*spt)] = node_idx;
+    ++(*spt);
     put_cbitset(bpt,node_idx);
     struct Cedges* pt = node_hash_tables[node_idx].hash_positions[HASH_TABLE_SIZE-1];
     while(pt != NULL){
         if(!test_cbitset(bpt,pt->des)){
-            add_to_old_State(pt->des,bpt);
+            addState(pt->des,bpt,thestack,spt);
         }
         pt = pt->next;
     }
@@ -236,7 +223,7 @@ int run_NFA(void){
         fprintf(stderr,"Fail to malloc newStates\n");
         error_exit();
     }
-    add_to_old_State(q_start,&alReadyOn);
+    addState(q_start,&alReadyOn,oldStates,&oldPt);
     clear_bitset(&alReadyOn);
     int ch = fgetc(input_stream);
     while(ch != EOF){
@@ -250,7 +237,7 @@ int run_NFA(void){
             while(pt != NULL){
                 if(pt->symbol == ch){
                     if(!test_cbitset(&alReadyOn,pt->des)){
-                        addState(pt->des);
+                        addState(pt->des,&alReadyOn,newStates,&newPt);
                     }
                 }
                 pt = pt->next;
