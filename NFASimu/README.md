@@ -5,6 +5,7 @@ Test this with:
 python3 NFASimu.py nfa.json  xxx.txt  
 ### Format  
 NFA is in json.  
+Note that currently, I require that even if a node has no edges to other nodes, it should have an entry in graph dictionary as an empty dict , , like "q0":{}.  
 ## C version  
 Input is a graph with attribute on it.  
 Note that currently assuming that every symbol here is encoded as ASCII.   

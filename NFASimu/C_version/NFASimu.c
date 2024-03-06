@@ -5,6 +5,9 @@
 #include<assert.h>
 #include"cbitset.h"
 
+//Optimization opportunity: When state stack size << node_number/8,
+//we can undo those changes instead of calling clear_bitset.  
+
 #define HASH_TABLE_SIZE (32)
 
 FILE* input_stream = NULL;

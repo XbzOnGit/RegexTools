@@ -10,6 +10,11 @@ Test case is from Sipser, check README.md in NFA2DFA folder for detail.
 ## NFASimu  
 NFA simulation on the fly.  
 ## Regex2NFA
+Parse regular expression and convert it into NFA.  
+## mygrep
+Combine Regex2NFA && NFASimu.  
+This is a grep that supports all regular languages.  
+
 
 
 
