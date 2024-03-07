@@ -1,6 +1,6 @@
 import json
 import sys
-
+from mindfa import minimize_dfa
 
 
 untaged_dstates = [] # A stack is enough.
@@ -111,4 +111,5 @@ if __name__ == '__main__':
     st_qname = nfa_dict['q_start']
     ed_qnames = nfa_dict['accepted_q']
     dfa_dict = nfa2dfa(graph_nfa, st_qname, ed_qnames)
+    dfa_dict = minimize_dfa(dfa_dict['graph'],dfa_dict['q_start'],dfa_dict['accepted_q'])
     print(dfa_dict)

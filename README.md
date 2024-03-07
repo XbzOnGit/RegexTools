@@ -7,6 +7,7 @@ Another issue is that it does not match across lines in grep cos dot does not ma
 ## NFA2DFA
 Convert NFA into DFA.  
 Test case is from Sipser, check README.md in NFA2DFA folder for detail.  
+Also add minimization of DFA into NFA2DFA, check mindfa.py for detail.  
 ## NFASimu  
 NFA simulation on the fly.  
 ## Regex2NFA
