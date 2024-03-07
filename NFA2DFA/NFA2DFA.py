@@ -91,6 +91,8 @@ def nfa2dfa(nfa_dict:dict, st_qname:str, ed_qnames:list)->dict:
             if stage in acceped_in_nfa:
                 theno = closure_to_id[clo]
                 dfa_dict["accepted_q"].append(f"q{theno}")
+    # Duplication.
+    dfa_dict['accepted_q'] = list(set(dfa_dict['accepted_q']))
     return dfa_dict
 
 
