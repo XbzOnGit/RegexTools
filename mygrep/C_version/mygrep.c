@@ -72,6 +72,7 @@ int main(int argc, char** argv){
         }
         length_of_input_str = (size_t)fz;
     }
+    input_buf[length_of_input_str] = 0;//Buffer size has one more char.
     const char* regex_str = argv[1];
     struct NFA_oneacc* nfapt = Regex2NFA(regex_str);
     if(NFASimu(nfapt,input_buf,length_of_input_str)){
