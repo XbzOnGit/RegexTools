@@ -1,6 +1,8 @@
 # mygrep
 Implement a grep.  
-Support all regular language: \,(,),*,?,|  
+Support all regular language: *,?,|  
+And support parentheses: (,)  
+And support escape for them: \\    
 Parse regular expression and convert it into NFA, then simulate NFA on the fly.  
 ## Usage
 make  
