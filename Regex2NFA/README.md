@@ -13,3 +13,10 @@ This format requires any state to have an entry in graph. If no edge is from thi
 I used (a|b)*abb  
 I converted it into NFA, and use NFA2DFA to convert it into DFA.  
 Then I draw the graph for DFA, and prove it equivalent with (a|b)*abb mathematically.  
+
+## Time complexity
+The python version includes some copying in the construction of graph, and thus cannot guarantee O(r).  
+Perhaps I will implement a C version later, combining the C_version of NFASimu to get the a guaranteed O(r) time on the construction of NFA, and then O(x*(m+n)), in total O(|r| * |x|).  
+About O(m+n) = O(r).  
+When limiting accepting state to be always only one, every or, char, star, concat is O(1), adding at most two states and at most four edges.  
+So the final m <= 2 x r && n <= 4 x r.  
